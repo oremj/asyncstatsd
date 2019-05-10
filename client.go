@@ -1,14 +1,11 @@
 package asyncstatsd
 
-import "github.com/alexcesaro/statsd"
-
 type Client interface {
-	Count(bucket string, n interface{})
-	Gauge(bucket string, value interface{})
+	Count(bucket string, value int64)
+	Gauge(bucket string, value int64)
 	Increment(bucket string)
-	Histogram(bucket string, value interface{})
-	Timing(bucket string, value interface{})
+	Histogram(bucket string, value int64)
+	Timing(bucket string, value int64)
 
-	Clone(opts ...statsd.Option) Client
 	NewTiming() Timing
 }
